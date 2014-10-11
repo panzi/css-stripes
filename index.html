@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>CSS Stripes</title>
+<style type="text/css">
+html {
+	background-color: rgba(250,252,255,1);
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjEuNTE3MTE1MzczNjk5MTciIGhlaWdodD0iOTEuMjAyODc0MTQ4NTQxNDQiIHZpZXdQb3J0PSIwIDAgNjEuNTE3MTE1MzczNjk5MTcgOTEuMjAyODc0MTQ4NTQxNDQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBzdHJva2U9InJnYmEoMjM1LDI0NCwyNTIsMSkiIHN0cm9rZS13aWR0aD0iMzIiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHRyYW5zZm9ybT0icm90YXRlKC01NikiPjxsaW5lIHgxPSItMTExIiB5MT0iLTM1IiB4Mj0iMTExIiB5Mj0iLTM1Ii8+PGxpbmUgeDE9Ii0xMTEiIHkxPSIxNiIgeDI9IjExMSIgeTI9IjE2Ii8+PGxpbmUgeDE9Ii0xMTEiIHkxPSI2NyIgeDI9IjExMSIgeTI9IjY3Ii8+PC9nPjwvc3ZnPg==);
+}
+body {
+	max-width: 640px;
+	margin: auto;
+	font-family: sans-serif;
+}
+p,
+.par {
+	margin: 10px 0;
+}
+input[type=number] {
+	text-align: right;
+	width: 3em;
+	font-family: monospace;
+}
+input.colorpicker {
+	width: 10em;
+	font-family: monospace;
+}
+#preview {
+	position: relative;
+	width: 640px;
+	height: 150px;
+}
+textarea {
+	display: block;
+	width: 100%;
+	min-height: 100px;
+	max-width: 640px;
+	box-sizing: border-box;
+}
+form img {
+	vertical-align: middle;
+}
+#resizer {
+	position: absolute;
+	right: -5px;
+	bottom: -5px;
+	width: 10px;
+	height: 10px;
+	background: #85bfe1;
+	border: 1px solid #4b92bb;
+	cursor: nwse-resize;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+#preview:hover #resizer {
+	opacity: 1;
+}
+.footer {
+	text-align: center;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="jquery.colorpicker.css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.colorpicker.js"></script>
+<script type="text/javascript" src="javascripts/stripes.js"></script>
+</head>
+<body>
+
+<h1>CSS Stripes</h1>
+<form action="javascript:;" id="stripes-form" class="par">
+	<table>
+		<tr>
+			<td><label for="stroke">Stripe Color:</label></td>
+			<td><input type="text" class="colorpicker" id="stroke" value="#ffe824"/></td>
+		</tr>
+		<tr>
+			<td><label for="bg-color">Background Color:</label></td>
+			<td><input type="text" class="colorpicker" id="bg-color" value="#000000"/></td>
+		</tr>
+		<tr>
+			<td><label for="width">Stripe Width:</label></td>
+			<td><input type="number" id="width" min="0" value="32"/> px</td>
+		</tr>
+		<tr>
+			<td><label for="gap">Gap:</label></td>
+			<td><input type="number" id="gap" min="0" value="19"/> px</td>
+		</tr>
+		<tr>
+			<td><label for="angle">Angle:</label></td>
+			<td><input type="number" id="angle" min="-90" max="90" value="-45"/> deg</td>
+		</tr>
+		<tr>
+			<td><label for="repeat">Repeat:</label></td>
+			<td>
+				<select id="repeat">
+					<option value="repeat" selected>repeat</option>
+					<option value="repeat-x">repeat-x</option>
+					<option value="repeat-y">repeat-y</option>
+					<option value="no-repeat">no-repeat</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+</form>
+
+<div id="preview">
+<div id="resizer"></div>
+</div>
+
+<div class="par">
+<label for="css">CSS:</label>
+<textarea id="css" readonly onclick="this.select();"></textarea>
+</div>
+
+<p>
+<strong>Note:</strong> Test your style in all browsers before you use it. Apparently different browsers round differently.
+</p>
+
+<p>
+Why not use linear gradients for this? Because linear gradients need IE10, this only needs IE9.
+</p>
+
+<p class="footer">
+<a href="https://github.com/panzi/css-stripes">GitHub</a>
+</p>
+
+</body>
+</html>
